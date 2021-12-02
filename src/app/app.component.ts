@@ -1,7 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   thisError, thatError, anotherError, impossibleError,
 } from './demo.Exceptions';
+import { RollbarService } from '../rollbar';
+
+import * as Rollbar from 'rollbar'; // When using Typescript < 3.6.0.
+// `import Rollbar from 'rollbar';` is the required syntax for Typescript 3.6.x. 
+// However, it will only work when setting either `allowSyntheticDefaultImports` 
+// or `esModuleInterop` in your Typescript options.
 
 @Component({
   selector: 'app-root',
@@ -10,6 +16,8 @@ import {
 })
 export class AppComponent {
   title = 'The Rollbar Demo Application';
+
+  constructor(@Inject(RollbarService) private rollbar: Rollbar) {}
 
   raiseBasicException() {
     throw Error('This is a basic exception');

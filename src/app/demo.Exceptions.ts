@@ -6,10 +6,8 @@ export class thisError extends Error {
     // 'Error' breaks prototype chain here
     super(message);
 
-    // restore prototype chain
-    const actualProto = new.target.prototype;
-
-    if (Object.setPrototypeOf) { Object.setPrototypeOf(this, actualProto); } else { this.__proto__ = actualProto; }
+  // Set the prototype explicitly.
+  Object.setPrototypeOf(this, thisError.prototype);
   }
 }
 
@@ -18,10 +16,8 @@ export class thatError extends Error {
       // 'Error' breaks prototype chain here
       super(message);
   
-      // restore prototype chain
-      const actualProto = new.target.prototype;
-  
-      if (Object.setPrototypeOf) { Object.setPrototypeOf(this, actualProto); } else { this.__proto__ = actualProto; }
+// Set the prototype explicitly.
+Object.setPrototypeOf(this, thatError.prototype);
     }
   }
 
@@ -30,10 +26,8 @@ export class anotherError extends Error {
       // 'Error' breaks prototype chain here
       super(message);
   
-      // restore prototype chain
-      const actualProto = new.target.prototype;
-  
-      if (Object.setPrototypeOf) { Object.setPrototypeOf(this, actualProto); } else { this.__proto__ = actualProto; }
+      // Set the prototype explicitly.
+      Object.setPrototypeOf(this, anotherError.prototype);
     }
   }
 
@@ -42,9 +36,7 @@ export class impossibleError extends Error {
       // 'Error' breaks prototype chain here
       super(message);
   
-      // restore prototype chain
-      const actualProto = new.target.prototype;
-  
-      if (Object.setPrototypeOf) { Object.setPrototypeOf(this, actualProto); } else { this.__proto__ = actualProto; }
+      // Set the prototype explicitly.
+      Object.setPrototypeOf(this, impossibleError.prototype);
     }
   }
