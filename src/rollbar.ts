@@ -20,14 +20,12 @@ const rollbarConfig = {
   payload: {
     environment: 'production',
     server: {
-      root: '\\User\\RollbarDemo\\dist\\RollbarDemo',
-      host: 'localhost',
-      branch: 'main'
+      root: 'http://localhost:4200/'
     },
     client: {
       javascript: {
         source_map_enabled: true,
-        code_version: '50d6f2aef6040d5c4cdcd2bd937b68aa80365068',
+        code_version: '948149a6ec3bad7e31bdd8c1d2c865e3492a6a37',
         guess_uncaught_frames: true
       }
     }
